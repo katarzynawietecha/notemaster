@@ -23,10 +23,32 @@ var counter = Vue.component("counter",{
   }
 })
 
+var changeText = Vue.component("change-text",{
+  template: `
+    <div>
+      <p>Change the text:</p>
+      <input v-model="myText.text" type="text" placeholder="Your text" />
+      <div>Uppercased: {{ upperText }}</div>
+    </div>
+  `,
+  data(){
+    return {
+      myText: {
+        text: ""
+      }
+    }
+  },
+  computed: {
+    upperText(){
+      return this.myText.text.toUpperCase()
+    }
+  }
+})
 
 var app = new Vue ({
   el: "#app",
   components: {
-    counter
+    counter,
+    changeText
   }
 })
