@@ -2,7 +2,7 @@ var counter = Vue.component("counter",{
   template: `
     <div>
       <div>Count: {{ this.count }}</div>
-      <button @click="increment">Increment by one</button>
+      <button @click="increment">Increment by {{ this.addNumber }}</button>
     </div>
   `,
   data(){
@@ -10,9 +10,15 @@ var counter = Vue.component("counter",{
       count: 0
     }
   },
+  props: {
+    addNumber: {
+      type: Number,
+      default: 1
+    }
+  },
   methods: {
     increment(){
-      this.count++
+      this.count += this.addNumber
     }
   }
 })
