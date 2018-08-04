@@ -1,16 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Note Master</title>
+  <title>Notemaster</title>
   <meta charset="UTF-8">
   <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
   <div id="app">
-    <!-- <counter v-bind:add-number="5"></counter> -->
+    <h1> {{ title }}</h1>
+    <div class="form">
+      <input type="text" placeholder="Title" v-model="note.title" />
+      <textarea placeholder="Content of note" v-model="note.text"></textarea>
+    </div>
+  </div>
+
+  <!-- <div id="app">
       <counter :add-number="3"></counter>
       <change-text></change-text>
-  </div>
+  </div> -->
 
   <script src="https://unpkg.com/vue"></script> <!--now: Vue.js v2.5.16-->
   <script src="js/app.js" type="text/javascript"></script>
