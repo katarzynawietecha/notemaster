@@ -9,8 +9,9 @@
   <div id="app">
     <h1> {{ title }}</h1>
     <div class="form">
-      <input type="text" placeholder="Title" v-model="note.title" />
-      <textarea placeholder="Content of note" v-model="note.text"></textarea>
+      <input type="text" placeholder="Title" v-model="note.newTitle" />
+      <textarea placeholder="Content of note" v-model="note.newText"></textarea>
+      <button @click="createNote">Create</button>
     </div>
   </div>
 

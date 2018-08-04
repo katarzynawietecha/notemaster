@@ -1,6 +1,13 @@
-var notes = {
-
-}
+var notes = [
+  {
+    title: "Buy a gift for sister",
+    text: "Black handbag with a zipper and very big chocolate with nuts and raisins."
+  },
+  {
+    title: "take care of the hamster",
+    text: "1. Clean the aquarium. 2. Prepare seeds."
+  }
+]
 
 
 var app = new Vue ({
@@ -9,8 +16,16 @@ var app = new Vue ({
     title: "Notemaster",
     notes: notes,
     note: {
-      title: "",
-      text: ""
+      newTitle: "",
+      newText: ""
+    }
+  },
+  methods: {
+    createNote: function(){
+      this.notes.push({
+          newTitle: this.note.newTitle,
+          newText: this.note.newText
+      })
     }
   }
 })
