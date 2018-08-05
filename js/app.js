@@ -1,11 +1,13 @@
 var notes = [
   {
     title: "Buy a gift for sister",
-    text: "Black handbag with a zipper and very big chocolate with nuts and raisins."
+    text: "Black handbag with a zipper and very big chocolate with nuts and raisins.",
+    date: "05/08/2018"
   },
   {
     title: "take care of the hamster",
-    text: "1. Clean the aquarium. 2. Prepare seeds."
+    text: "1. Clean the aquarium. 2. Prepare seeds.",
+    date: "03/08/2018"
   }
 ]
 
@@ -17,14 +19,16 @@ var app = new Vue ({
     notes: notes,
     note: {
       newTitle: "",
-      newText: ""
+      newText: "",
+      date: ""
     }
   },
   methods: {
     createNote: function(){
       this.notes.push({
-          newTitle: this.note.newTitle,
-          newText: this.note.newText
+          title: this.note.newTitle,
+          text: this.note.newText,
+          date: new Date().getDate()+"/"+(new Date().getMonth()+1)+"/"+new Date().getFullYear()
       })
     }
   }

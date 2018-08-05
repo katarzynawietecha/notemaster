@@ -13,6 +13,13 @@
       <textarea placeholder="Content of note" v-model="note.newText"></textarea>
       <button @click="createNote">Create</button>
     </div>
+    <ul class="note-list">
+      <li v-for="item in notes">
+        <h3>{{ item.title }}</h3>
+        <p style="color: gray;"> {{ item.date }}</p>
+        <p> {{ item.text }} </p>
+      </li>
+    </ul>
   </div>
 
   <!-- <div id="app">
