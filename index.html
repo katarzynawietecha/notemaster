@@ -11,10 +11,17 @@
     <div class="form">
       <input type="text" placeholder="Title" v-model="note.newTitle" />
       <textarea placeholder="Content of note" v-model="note.newText"></textarea>
+      <select v-model="note.background">
+        <option value="white">White</option>
+        <option value="green">Green</option>
+        <option value="blue">Blue</option>
+        <option value="orange">Orange</option>
+        <option value="yellow">Yellow </option>
+      </select>
       <button @click="createNote">Create</button>
     </div>
     <ul class="note-list">
-      <li v-for="(item, index) in notes">
+      <li v-for="(item, index) in notes" :style="{ 'background-color': item.background }">
         <h3>{{ item.title }}</h3>
         <p style="color: gray;"> {{ item.date }}</p>
         <p> {{ item.text }} </p>
@@ -22,11 +29,6 @@
       </li>
     </ul>
   </div>
-
-  <!-- <div id="app">
-      <counter :add-number="3"></counter>
-      <change-text></change-text>
-  </div> -->
 
   <script src="https://unpkg.com/vue"></script> <!--now: Vue.js v2.5.16-->
   <script src="js/app.js" type="text/javascript"></script>
