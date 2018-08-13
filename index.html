@@ -14,10 +14,11 @@
       <button @click="createNote">Create</button>
     </div>
     <ul class="note-list">
-      <li v-for="item in notes">
+      <li v-for="(item, index) in notes">
         <h3>{{ item.title }}</h3>
         <p style="color: gray;"> {{ item.date }}</p>
         <p> {{ item.text }} </p>
+        <span @click="notes.splice(index, 1)">x</span>
       </li>
     </ul>
   </div>
