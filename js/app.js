@@ -43,16 +43,26 @@ var app = new Vue ({
       date: "",
       background: "white"
     },
-    radioColor: "all"
+    radioColor: "all",
+    error: false
   },
   methods: {
     createNote: function(){
-      this.notes.push({
-          title: this.note.newTitle,
-          text: this.note.newText,
-          date: new Date().getDate()+"/"+(new Date().getMonth()+1)+"/"+new Date().getFullYear(),
-          background: this.note.background
-      })
+      if(!this.note.newTitle){ //only title is required
+        this.error = true;
+      }else{
+        this.notes.push({
+            title: this.note.newTitle,
+            text: this.note.newText,
+            date: new Date().getDate()+"/"+(new Date().getMonth()+1)+"/"+new Date().getFullYear(),
+            background: this.note.background
+        })
+        //clearing input fields
+        this.note.newTitle = "";
+        this.note.newText = "";
+        this.note.background = "white";
+        this.error = false;
+      }
     }
   }
 })

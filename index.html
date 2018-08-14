@@ -19,6 +19,7 @@
         <option value="yellow">Yellow </option>
       </select>
       <button @click="createNote">Create</button>
+      <p v-show="error">Title is required</p>
     </div>
 
     <div>Sort notes by color:
