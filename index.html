@@ -20,8 +20,21 @@
       </select>
       <button @click="createNote">Create</button>
     </div>
+
+    <div>Sort notes by color:
+      <input type="radio" v-model="radioColor" value="all">all
+      <input type="radio" v-model="radioColor" value="white">white
+      <input type="radio" v-model="radioColor" value="green">green
+      <input type="radio" v-model="radioColor" value="blue">blue
+      <input type="radio" v-model="radioColor" value="orange">orange
+      <input type="radio" v-model="radioColor" value="yellow">yellow
+    </div>
+    <!-- <p>{{ radioColor }}</p> -->
+
     <ul class="note-list">
-      <li v-for="(item, index) in notes" :style="{ 'background-color': item.background }">
+      <li v-for="(item, index) in notes"
+          :style="{ 'background-color': item.background }"
+          v-show="(item.background === radioColor) || (radioColor === 'all') || (radioColor === '')">
         <h3>{{ item.title }}</h3>
         <p style="color: gray;"> {{ item.date }}</p>
         <p> {{ item.text }} </p>
