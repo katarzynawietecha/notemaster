@@ -3,28 +3,28 @@ var notes = [
     title: "Buy a gift for sister",
     text: "Black handbag with a zipper and very big chocolate with nuts and raisins.",
     date: "05/08/2018",
-    background: "white",
+    background: "ghostwhite",
     importance: "standard"
   },
   {
     title: "take care of the hamster",
     text: "1. Clean the aquarium. 2. Prepare seeds.",
     date: "03/08/2018",
-    background: "yellow",
+    background: "plum",
     importance: "standard"
   },
   {
     title: "Smart woman finish rich",
     text: 'Borrow "Smart woman finish rich" book from Magda',
     date: "10/08/2018",
-    background: "blue",
+    background: "lightskyblue",
     importance: "standard"
   },
   {
     title: "Laundry",
     text: "Do the laundry (white and color)",
     date: "12/08/2018",
-    background: "blue",
+    background: "lightskyblue",
     importance: "important"
   },
   {
@@ -46,7 +46,7 @@ var app = new Vue ({
       newTitle: "",
       newText: "",
       date: "",
-      background: "white",
+      background: "ghostwhite",
       importance: "standard"
     },
     radioColor: "all",

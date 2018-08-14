@@ -3,60 +3,72 @@
 <head>
   <title>Notemaster</title>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
   <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
   <div id="app">
-    <h1> {{ title }}</h1>
+    <h1 class="text-sm-center mt-3 mb-5"> {{ title }}</h1>
 
-    <!-- Creating new notes -->
-    <div class="form">
-      <input type="text" placeholder="Title" v-model="note.newTitle" />
-      <textarea placeholder="Content of note" v-model="note.newText"></textarea>
+    <div class="container mb-4">
 
-      <select v-model="note.background">Select color:
-        <option value="white">White</option>
-        <option value="green">Green</option>
-        <option value="blue">Blue</option>
-        <option value="orange">Orange</option>
-        <option value="yellow">Yellow </option>
-      </select>
+        <!-- Creating new notes -->
+        <div class="form-group row">
+          <input type="text" placeholder="Title" v-model="note.newTitle" class="form-control mb-2"/>
+          <p v-show="error" class="alert alert-danger mb-2 col-12">Title is required</p>
+          <textarea placeholder="Content of note" v-model="note.newText" class="form-control mb-2"></textarea>
 
-      <select v-model="note.importance">Select importance:
-        <option value="standard">Standard</option>
-        <option value="important">Important</option>
-      </select>
+          <select v-model="note.background" class="col-sm-6 mb-2">Select color:
+            <option value="ghostwhite">White</option>
+            <option value="mediumaquamarine">Green</option>
+            <option value="lightskyblue">Blue</option>
+            <option value="orange">Orange</option>
+            <option value="plum">Pink</option>
+          </select>
 
-      <button @click="createNote">Create</button>
-      <p v-show="error">Title is required</p>
-    </div>
+          <select v-model="note.importance" class="col-sm-6 mb-2">Select importance:
+            <option value="standard">Standard</option>
+            <option value="important">Important</option>
+          </select>
 
-    <!-- Sorting notes -->
-    <div>Sort notes by color:<br>
-      <input type="radio" v-model="radioColor" value="all">all
-      <input type="radio" v-model="radioColor" value="white">white
-      <input type="radio" v-model="radioColor" value="green">green
-      <input type="radio" v-model="radioColor" value="blue">blue
-      <input type="radio" v-model="radioColor" value="orange">orange
-      <input type="radio" v-model="radioColor" value="yellow">yellow
-    </div>
-    <div>Sort notes by importance:<br>
-      <input type="radio" v-model="noteImportance" value="all">all
-      <input type="radio" v-model="noteImportance" value="important">important
-      <input type="radio" v-model="noteImportance" value="standard">standard
+          <div class="text-center col-sm-12">
+            <button @click="createNote" class="btn btn-primary btn-lg mb-3">Create</button>
+          </div>
+        </div>
+
+        <!-- Sorting notes panel -->
+        <div class="row">
+          <div class="col-lg-6 mb-2">Sort by color:&nbsp;
+            <input type="radio" v-model="radioColor" value="all">all
+            <input type="radio" v-model="radioColor" value="ghostwhite">white
+            <input type="radio" v-model="radioColor" value="mediumaquamarine">green
+            <input type="radio" v-model="radioColor" value="lightskyblue">blue
+            <input type="radio" v-model="radioColor" value="orange">orange
+            <input type="radio" v-model="radioColor" value="plum">pink
+          </div>
+          <div class="col-lg-6 mb-2">Sort by importance:&nbsp;
+            <input type="radio" v-model="noteImportance" value="all">all
+            <input type="radio" v-model="noteImportance" value="important">important
+            <input type="radio" v-model="noteImportance" value="standard">standard
+          </div>
+        </div>
     </div>
 
     <!-- List of notes -->
-    <ul class="note-list">
-      <li v-for="(item, index) in notes"
-          :style="{ 'background-color': item.background }"
-          v-show="((item.background === radioColor) || (radioColor === 'all')) && ((item.importance === noteImportance) || (noteImportance === 'all'))"><!-- v-for -> index is needed to deleteNote(index) working-->
-        <h3>{{ item.title }}</h3>
-        <p style="color: gray;"> {{ item.date }} <span v-show="item.importance === 'important'">{{ item.importance }}!</span></p>
-        <p> {{ item.text }} </p>
-        <span @click="notes.splice(index, 1)">x</span>
-      </li>
-    </ul>
+    <div class="row p-3 mt-4">
+      <div v-for="(item, index) in notes"
+          v-show="((item.background === radioColor) || (radioColor === 'all')) && ((item.importance === noteImportance) || (noteImportance === 'all'))"
+          class="col-md-4 p-1"><!-- v-for -> index is needed to deleteNote(index) working-->
+         <div class="card card-body pt-2" :style="{ 'background-color': item.background }">
+            <p @click="notes.splice(index, 1)" class="text-right mb-1"><span class="cursor-p">x</span></p>
+            <h3 class="card-title">{{ item.title }}</h3>
+            <p> {{ item.date }} <span v-show="item.importance === 'important'" class="badge badge-danger">{{ item.importance }}!</span></p>
+            <p class="card-text"> {{ item.text }} </p>
+        </div>
+      </div>
+    </div>
   </div>
 
   <script src="https://unpkg.com/vue"></script> <!--now: Vue.js v2.5.16-->
