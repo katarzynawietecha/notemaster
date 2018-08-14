@@ -8,21 +8,31 @@
 <body>
   <div id="app">
     <h1> {{ title }}</h1>
+
+    <!-- Creating new notes -->
     <div class="form">
       <input type="text" placeholder="Title" v-model="note.newTitle" />
       <textarea placeholder="Content of note" v-model="note.newText"></textarea>
-      <select v-model="note.background">
+
+      <select v-model="note.background">Select color:
         <option value="white">White</option>
         <option value="green">Green</option>
         <option value="blue">Blue</option>
         <option value="orange">Orange</option>
         <option value="yellow">Yellow </option>
       </select>
+
+      <select v-model="note.importance">Select importance:
+        <option value="standard">Standard</option>
+        <option value="important">Important</option>
+      </select>
+
       <button @click="createNote">Create</button>
       <p v-show="error">Title is required</p>
     </div>
 
-    <div>Sort notes by color:
+    <!-- Sorting notes -->
+    <div>Sort notes by color:<br>
       <input type="radio" v-model="radioColor" value="all">all
       <input type="radio" v-model="radioColor" value="white">white
       <input type="radio" v-model="radioColor" value="green">green
@@ -30,14 +40,19 @@
       <input type="radio" v-model="radioColor" value="orange">orange
       <input type="radio" v-model="radioColor" value="yellow">yellow
     </div>
-    <!-- <p>{{ radioColor }}</p> -->
+    <div>Sort notes by importance:<br>
+      <input type="radio" v-model="noteImportance" value="all">all
+      <input type="radio" v-model="noteImportance" value="important">important
+      <input type="radio" v-model="noteImportance" value="standard">standard
+    </div>
 
+    <!-- List of notes -->
     <ul class="note-list">
       <li v-for="(item, index) in notes"
           :style="{ 'background-color': item.background }"
-          v-show="(item.background === radioColor) || (radioColor === 'all') || (radioColor === '')">
+          v-show="((item.background === radioColor) || (radioColor === 'all')) && ((item.importance === noteImportance) || (noteImportance === 'all'))"><!-- v-for -> index is needed to deleteNote(index) working-->
         <h3>{{ item.title }}</h3>
-        <p style="color: gray;"> {{ item.date }}</p>
+        <p style="color: gray;"> {{ item.date }} <span v-show="item.importance === 'important'">{{ item.importance }}!</span></p>
         <p> {{ item.text }} </p>
         <span @click="notes.splice(index, 1)">x</span>
       </li>
