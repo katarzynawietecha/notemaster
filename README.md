@@ -7,7 +7,7 @@ This is an application for creating notes. New notes can have different backgrou
 
 **License**
 
- Quiz is released under the MIT License.
+ Notemaster is released under the MIT License.
 
 
 **Demo**
