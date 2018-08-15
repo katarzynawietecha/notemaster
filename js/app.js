@@ -68,7 +68,7 @@ var app = new Vue ({
         //clearing input fields
         this.note.newTitle = "";
         this.note.newText = "";
-        this.note.background = "white";
+        this.note.background = "ghostwhite";
         this.note.importance = "standard";
         this.error = false;
       }
