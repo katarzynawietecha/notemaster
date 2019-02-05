@@ -14,6 +14,8 @@ This is an application for creating notes. New notes can have different backgrou
 
 https://wietecha-mrzyglod.github.io/notemaster/
 
+![screenshot of notemaster](/images/notemaster.jpg)
+
 
 **Technologies Used**
 

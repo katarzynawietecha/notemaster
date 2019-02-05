@@ -1,3 +1,6 @@
+#app {
+  overflow: hidden;
+}
 .cursor-p {
     cursor: pointer;
 }

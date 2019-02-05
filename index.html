@@ -57,7 +57,7 @@
     </div>
 
     <!-- List of notes -->
-    <div class="row col-sm-12 p-3 mt-4">
+    <div class="row p-3 mt-4">
       <div v-for="(item, index) in notes"
           v-show="((item.background === radioColor) || (radioColor === 'all')) && ((item.importance === noteImportance) || (noteImportance === 'all'))"
           class="col-md-4 p-1"><!-- v-for -> index is needed to deleteNote(index) working-->
