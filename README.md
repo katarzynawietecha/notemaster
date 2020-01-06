@@ -12,7 +12,7 @@ This is an application for creating notes. New notes can have different backgrou
 
 **Demo**
 
-https://wietecha-mrzyglod.github.io/notemaster/
+https://katarzynawietecha.github.io/notemaster/
 
 ![screenshot of notemaster](/images/notemaster.jpg)
 
